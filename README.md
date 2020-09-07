@@ -1,3 +1,7 @@
+# What's different in this fork
+
+Nothing as of now, except for some Unity meta files committed to remove the "untracked content" git mark.
+
 # Unity-Logger
 
 <img align="center" width="400" height="400" src="https://i.imgur.com/qNxrouI.png">
