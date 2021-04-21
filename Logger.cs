@@ -94,6 +94,8 @@ public class Logger
 {
     public const Channel kAllChannels = (Channel) ~0u;
 
+    public static bool isGlobalLogColoringOn = true;
+    
     ///////////////////////////
     // Singleton set up 
     ///////////////////////////
@@ -285,7 +287,7 @@ public class Logger
             Debug.LogErrorFormat("Please add colour for channel {0}", logChannel);
         }
 
-        if(shouldColour)
+        if(shouldColour && isGlobalLogColoringOn)
         {
             return string.Format("<b><color={0}>[{1}] </color></b> <color={2}>{3}</color>", channelColour, logChannel, priortiyColour, message);
         }
