@@ -228,15 +228,20 @@ public class Logger
     /// <param name="message"></param>
     private static void FinalLog(Channel logChannel, Priority priority, string message)
     {
+        //Debug.Log($"-------------------- LOG A [{IsChannelActive(logChannel)}]");
         if (IsChannelActive(logChannel))
         {
             // Dialog boxes can't support rich text mark up, do we won't colour the final string 
 			string finalMessage = ContructFinalString(logChannel, priority, message, (priority != Priority.FatalError));
 
+            //Debug.Log($"-------------------- LOG B final message = [{finalMessage}]");
+            
 #if UNITY_EDITOR && UNITY_DIALOGS
+            //Debug.Log($"-------------------- LOG C");
             // Fatal errors will create a pop up when in the editor
             if (priority == Priority.FatalError)
 			{
+                //Debug.Log($"-------------------- LOG D");
 			    bool ignore = EditorUtility.DisplayDialog("Fatal error", finalMessage, "Ignore", "Break");
 			    if (!ignore)
 			    {
@@ -244,7 +249,8 @@ public class Logger
 			    }
             }
 #endif 
-            // Call the correct unity logging function depending on the type of error 
+            // Call the correct unity logging function depending on the type of error
+            //Debug.Log($"-------------------- LOG E priority = [{priority}]");
             switch (priority)
             {
                 case Priority.FatalError:
